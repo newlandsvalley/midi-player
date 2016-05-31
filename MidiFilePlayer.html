@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Elm 0.17 Midi Player module sample</title>
+
+  </head>
+  <body>
+    <div id="elmMidiFilePlayer"></div>
+    <script src="js/soundfont-player.js"></script>
+    <script src="distjs/elmMidiFilePlayer.js"></script>
+    <script>
+    var node = document.getElementById('elmMidiFilePlayer');
+    var myapp = Elm.MidiFilePlayer.embed(node);
+    <!-- the javascript below is written to accept an initial parameter named node-->
+    </script>
+    <script src="js/nativeSoundFont.js"></script>
+  </body>
+</html>
