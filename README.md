@@ -154,7 +154,7 @@ The tempo setting alters the effect of the number of _ticks_ taken by each note 
 
     MidiMessage = (Ticks, MidiEvent)
     
-It is often convenient to produce both a NoteOn and NoteOff for each note where there is no time delta time (in Ticks) for the NoteOn, but a positive time for NoteOff.  This value is worked out from the duration  of the note and the tempo and is sufficient to set the pace of the tune at a regular tempo.So, if the previous note lasts a full beat, set this to 480, if half a beat, set it to 240 and so on.
+It is often convenient to produce both a NoteOn and NoteOff for each note where there is no time delta time (in Ticks) for the NoteOn, but a positive time for NoteOff.  This value is worked out from the duration  of the note and the tempo and is sufficient to set the pace of the tune at a regular tempo.So, if the note lasts a full beat, set this to 480, if half a beat, set it to 240 and so on.
 
 Finally, the overall MIDI track is represented like this:
 
