@@ -105,12 +105,12 @@ where _establishRecording_ sends a command to the player which establishes the r
 
 The following components are required by the player:
 
-* The javascript for the cobined calling program and player
+* The javascript for the combined calling program and player
 * The javascript for the sound fonts called by the player through elm ports
 * The soundfonts used by the player, assumed to be in the directory _assets/soundfonts_
 * The image files used by the player widget assumed to be in the directory _assets/images_
 
-The various pieces of javascript can be assmebled (here for a calling program named _MidiFilePlayer_) in the html file as follows
+The various pieces of javascript can be assembled (here for a calling program named _MidiFilePlayer_) in the html file as follows
 
     <!DOCTYPE html>
     <html lang="en">
@@ -142,7 +142,7 @@ Although designed for playback of MIDI files, the player can be used with other 
     trackCount - set this to 1
     ticksPerBeat - it is usually convenient to set this to 480
 
-The minimul set of MidiEvents that are most usefully implemented are these:
+The minimal set of MidiEvents that are most usefully implemented are these:
 
     Tempo microsecondsPerQuarterNoteBeat 
 
@@ -150,11 +150,11 @@ The minimul set of MidiEvents that are most usefully implemented are these:
 
     NoteOff  channel pitch velocity    
  
-The tempo setting alters the effect of the number of _ticks_ taken by each note (see later). In the NoteOn and NoteOff messages, channel is ignored and can be set to any integer value, pitch is the [MIDI pitch number](http://newt.phys.unsw.edu.au/jw/notes.html) and velocity (related to gain) is a numbert between 0 and 127.  This is then built into a MidiMessage:
+The tempo setting alters the effect of the number of _ticks_ taken by each note (see later). In the NoteOn and NoteOff messages, channel is ignored and can be set to any integer value, pitch is the [MIDI pitch number](http://newt.phys.unsw.edu.au/jw/notes.html) and velocity (related to gain) is a number between 0 and 127.  This is then built into a MidiMessage:
 
     MidiMessage = (Ticks, MidiEvent)
     
-It is often convenient to produce both a NoteOn and NoteOff for each note where there is no time delta time (in Ticks) for the NoteOn, but a positive time for NoteOff.  This value is worked out from the duration  of the note and the tempo and is sufficient to set the pace of the tune at a regular tempo.So, if the note lasts a full beat, set this to 480, if half a beat, set it to 240 and so on.
+It is often convenient to produce both a NoteOn and NoteOff for each note where there is no delta time (in Ticks) for the NoteOn, but a positive time for NoteOff.  This value is worked out from the duration  of the note and the tempo and is sufficient to set the pace of the tune at a regular tempo.So, if the note lasts a full beat, set this to 480, if half a beat, set it to 240 and so on.
 
 Finally, the overall MIDI track is represented like this:
 
