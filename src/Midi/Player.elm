@@ -106,9 +106,17 @@ update msg model =
       )  
    
     SetRecording r ->
-      ( { model | track = toTrack0 r }
-      , Cmd.none
-      )  
+        let
+           state =  model.playbackState 
+           newState = { state | playing = False 
+                              , noteOnSequence = False
+                              , noteOnChannel = -1 
+                      }
+           newModel = { model | playbackState = newState
+                              , track = toTrack0 r
+                      }
+        in
+          (newModel, stop)  
 
     Start ->
         -- chaining the next action which is step
@@ -242,6 +250,13 @@ play note =
   in
     requestPlayNote note1
 
+{- issue a stop asynchronously to what the player thinks it's doing - this is issued
+   externally whenever the player gets a new MIDI recording to play and must interrupt
+   what it's doing.
+-}
+stop : Cmd Msg
+stop = 
+  Task.perform (\_ -> NoOp) (\_ -> MoveTo 0) (Task.succeed NoOp)
 
 {- step through the state, and return the note if it's a NoteOn message
    if it's a RunningStatus message, then step to a note as if the previous 
