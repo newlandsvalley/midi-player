@@ -150,11 +150,11 @@ The minimal set of MidiEvents that are most usefully implemented are these:
 
     NoteOff  channel pitch velocity    
  
-The tempo setting alters the effect of the number of _ticks_ taken by each note (see later). In the NoteOn and NoteOff messages, channel is ignored and can be set to any integer value, pitch is the [MIDI pitch number](http://newt.phys.unsw.edu.au/jw/notes.html) and velocity (related to gain) is a number between 0 and 127.  This is then built into a MidiMessage:
+The tempo setting defines the number of microseconds taken by each beat (see later). In the NoteOn and NoteOff messages, channel is ignored and can be set to any integer value, pitch is the [MIDI pitch number](http://newt.phys.unsw.edu.au/jw/notes.html) and velocity (related to gain) is a number between 0 and 127.  This is then built into a MidiMessage:
 
     MidiMessage = (Ticks, MidiEvent)
     
-It is often convenient to produce both a NoteOn and NoteOff for each note where there is no delta time (in Ticks) for the NoteOn, but a positive time for NoteOff.  This value is worked out from the duration  of the note and the tempo and is sufficient to set the pace of the tune at a regular tempo.So, if the note lasts a full beat, set this to 480, if half a beat, set it to 240 and so on.
+It is often convenient to produce both a NoteOn and NoteOff for each note where there is no delta time (in Ticks) for the NoteOn, but a positive time for NoteOff. The simplest thing to do is to set the note ticks to 480 for a whole note, 240 for a half note and so on.  Then you can vary the pace of the playback simply by setting an appropriate Tempo value at the start of the track (or whenever the tempo subsequently changes) 
 
 Finally, the overall MIDI track is represented like this:
 
