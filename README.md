@@ -149,8 +149,10 @@ The minimal set of MidiEvents that are most usefully implemented are these:
     NoteOn  channel pitch velocity    
 
     NoteOff  channel pitch velocity    
+    
+Typically, NoteOn messages define the note to be played at a time delay of zero whilst NoteOff messages define the time it is played for because of a positive time delay.In the NoteOn and NoteOff messages, channel is ignored and can be set to any integer value, pitch is the [MIDI pitch number](http://newt.phys.unsw.edu.au/jw/notes.html) and velocity (related to gain) is a number between 0 and 127.
  
-The tempo setting defines the number of microseconds taken by each beat (see later). In the NoteOn and NoteOff messages, channel is ignored and can be set to any integer value, pitch is the [MIDI pitch number](http://newt.phys.unsw.edu.au/jw/notes.html) and velocity (related to gain) is a number between 0 and 127.  This is then built into a MidiMessage:
+The tempo setting defines the number of microseconds taken by each beat (see later).   This is then built into a MidiMessage:
 
     MidiMessage = (Ticks, MidiEvent)
     

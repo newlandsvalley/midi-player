@@ -140,23 +140,30 @@ view : Model -> Html Msg
 view model =
   div [] 
     [  
-      loadButton model
+      loadButtons model
     {- , div [  ] [ text ("recording result: " ++ (viewRecordingResult model.track0)) ] - use for debug -}
     ,  Html.map PlayerMsg (Midi.Player.view model.player) 
     ]
 
-{- the player capsule -}
-loadButton : Model -> Html Msg
-loadButton model = 
+{- load the midi files if not yet loaded -}
+loadButtons : Model -> Html Msg
+loadButtons model = 
   case model.recording of
     Ok _ ->
       div [] []
     Err _ ->
-      button 
-        [ 
-          onClick (LoadMidi "midi/lillasystern.midi")
-          -- , style buttonStyle
-        ] [ text "load file" ]    
+      div [] 
+        [ button 
+          [ 
+            onClick (LoadMidi "midi/lillasystern.midi")
+            -- , style buttonStyle
+          ] [ text "load file" ]    
+        , button 
+          [ 
+            onClick (LoadMidi "midi/chordsample.midi")
+            -- , style buttonStyle
+          ] [ text "load chord sample" ]    
+        ]
 
 
 -- CSS
