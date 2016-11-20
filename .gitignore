@@ -3,4 +3,4 @@ elm.js
 Main.html
 index.html
 /deprecated/
-/distjs/
+/distjs/*.js

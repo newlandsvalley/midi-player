@@ -1,7 +1,7 @@
 midi-player
 ===========
 
-This is an elm 0.17 module that encapsulates a control for the playback of single-track MIDI recordings which conform to the [MidiRecording](https://github.com/newlandsvalley/elm-comidi/blob/master/src/MidiTypes.elm) format (i.e. those produced by the elm-comidi parser).  The control uses stop, start and pause buttons and includes a capsule that indicates the proportion of the tune that has been played. It uses as an instrument the acoustic grand piano.
+This is an Elm 0.18 module that encapsulates a control for the playback of single-track MIDI recordings which conform to the [MidiRecording](https://github.com/newlandsvalley/elm-comidi/blob/master/src/MidiTypes.elm) format (i.e. those produced by the elm-comidi parser).  The control uses stop, start and pause buttons and includes a capsule that indicates the proportion of the tune that has been played. It uses as an instrument the acoustic grand piano.
 
 It exposes the following message type which sends a recording to the player:
     
@@ -107,6 +107,7 @@ The following components are required by the player:
 
 * The javascript for the combined calling program and player
 * The javascript for the sound fonts called by the player through elm ports
+* The javascript for loading the sample MIDI file
 * The soundfonts used by the player, assumed to be in the directory _assets/soundfonts_
 * The image files used by the player widget assumed to be in the directory _assets/images_
 
@@ -118,7 +119,7 @@ The various pieces of javascript can be assembled (here for a calling program na
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Elm 0.17 Midi Player module sample</title>
+        <title>Elm 0.18 Midi Player module sample</title>
 
       </head>
       <body>
@@ -131,6 +132,7 @@ The various pieces of javascript can be assembled (here for a calling program na
         <!-- the javascript below is written to accept an initial parameter named node-->
         </script>
         <script src="js/nativeSoundFont.js"></script>
+        <script src="js/nativeBinaryFileIO.js"></script>
       </body>
     </html>
     
